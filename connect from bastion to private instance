@@ -1,0 +1,29 @@
+main.tf:-
+----------
+
+resource "null_resource" "xxxxx" {
+
+
+provisioner "remote-exec" {
+
+inline = [
+      "echo 'Hello world!' > /home/ubuntu/readme.txt",
+]
+
+connection {
+
+	type = "ssh"
+	user = "ubuntu"
+	host = "xx.xx.xx.xx"
+	private_key = "${file("/Users/xxxx/Downloads/keys/xxxx.pem")}" ### provide the key
+	bastion_private_key = "${file("/Users/xxxxx/Downloads/keys/xxxx.pem")}" ### provide the key
+        bastion_host = "xx.xx.xx.xx"
+	timeout = "2m"
+	agent = false
+
+}
+
+}
+
+
+}
